@@ -1,0 +1,205 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-image:
+        url("https://cdn.siap.id/s3/UI-UX/bg-login-kemendikbud-white2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 100000;
+}
+
+.ribbon::before, .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #cc0000;
+}
+
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #cc0000;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+    margin-top: -10px;
+    margin-left: -25px;
+}
+
+.ribbon-top-left::before, .ribbon-top-left::after {
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+.ribbon-top-left::before {
+    top: 0;
+    right: 0;
+}
+
+.ribbon-top-left::after {
+    bottom: 0;
+    left: 0;
+}
+
+.ribbon-top-left span {
+    right: -25px;
+    top: 30px;
+    transform: rotate(-45deg);
+}
+
+.shadow {
+    box-shadow: 0px 12px 20px #04509c;
+}
+
+.copyright{
+    margin-top: 90px;
+    margin-right: auto;
+    font-size: 10px;
+}
+
+.card-none-color {
+    background-color: white;
+}
+
+.card {
+    color: rgb(63, 63, 63);
+    border: none;
+    background-color: #eaeff3;
+}
+
+.card-color {
+    background-color: #0f91fc;
+}
+
+.img-fluid {
+    min-width: 40px;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.password-icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1000;
+}
+
+.garis {
+    text-align: center;
+    color: rgb(158, 158, 158);
+}
+
+.garis p {
+    position: relative;
+    display: inline-block;
+}
+
+.garis p:before {
+    content: " ";
+    position: absolute;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    width: 90px;
+    left: -100px;
+    top: 50%;
+}
+
+.garis p:after {
+    content: " ";
+    position: absolute;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    width: 90px;
+    right: -100px;
+    top: 50%;
+}
+
+/* ----password--- */
+#mybutton {
+    position: relative;
+    z-index: 1;
+    left: 90%;
+    top: -25px;
+    cursor: pointer;
+}
+
+.myinput {
+    width: 100%;
+    padding: 5px;
+}
+
+.carousel {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100% !important;
+}
+
+.carousel-img {
+    height: 300px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.carousel-img img {
+    height: 250px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: opacity .5s ease;
+}
+
+.carousel-indicators .active {
+    width: 18px;
+    /* border-radius: 50% !important; */
+}
+
+@media only screen and (max-width: 480px) {
+    .carousel-text h4 {
+        font-size: 18px;
+    }
+    .carousel-text p {
+        font-size: 14px;
+    }
+    .carousel-img img {
+        height: 170px;
+    }
+    .carousel-img {
+        height: 180px;
+    }
+    .carousel-indicators {
+        top: 165px;
+    }
+    .carousel-indicators [data-bs-target] {
+        width: 7px;
+        height: 7px;
+    }
+    .carousel-indicators .active {
+        width: 18px;
+        border-radius: 50%;
+    }
+}
