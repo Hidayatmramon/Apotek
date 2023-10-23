@@ -13,7 +13,7 @@
           rel="stylesheet">
 
 
-    <title>piketkuy.id</title>
+    <title>apotekkuy</title>
     <link href="{{asset('homepage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -48,17 +48,16 @@
                 <nav class="main-nav d-flex align-items-center justify-content-between">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
-                        <img src="{{asset('homepage/assets/images/logo.png')}}" alt="PiketKuy.id">
+                        <img src="{{asset('#')}}" alt="apotekkuy.id">
                     </a>
                     <!-- ***** Logo End ***** -->
 
-                    <!-- ***** Menu Start *****
+                
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active"></a></li>
-                        <li class="scroll-to-section"><a href="#services"></a></li>
+                        <li class="scroll-to-section"><a href="{{ route('medicine.index') }}" class="active">Obat</a></li>
+                        {{-- <li class="scroll-to-section"><a href="#services"></a></li>
                         <li class="scroll-to-section"><a href="#about"></a></li>
-                        <li class="scroll-to-section"><a href="#pricing"></a></li>
-                       -->
+                        <li class="scroll-to-section"><a href="#pricing"></a></li> --}}
 
                     <!-- ***** Avatar Start ***** -->
                     <div class="dropdown">
@@ -90,7 +89,7 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="section-heading">
-                    <h4>Pelajar Cerdas Adalah Pelajar Yang Mau Membersihkan Ruang Rayonnya. </h4>
+                    {{-- <h4>Pelajar Cerdas Adalah Pelajar Yang Mau Membersihkan Ruang Rayonnya. </h4> --}}
                 </div>
             </div>
 

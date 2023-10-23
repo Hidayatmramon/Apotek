@@ -11,12 +11,15 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        if (Auth::user()->role !== 'user') {
-            $haris=Hari::all();
-            return view('admin.index', compact("haris"));
-        } else {
-            return view('home.index');
-        }
+       if (Auth::user()->role === 'admin') {
+        $haris = Hari::all();
+        return view('admin.index', compact('haris'));
+    } elseif (Auth::user()->role === 'kasir') {
+        $haris = Hari::all();
+        return view('admin.index', compact('haris'));
+    } else {
+        return view('home.index');
+    }
     }
 
      public function home(){

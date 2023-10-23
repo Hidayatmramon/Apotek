@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MedicineController;
 
 
 /*
@@ -18,13 +19,16 @@ use App\Http\Controllers\StudentController;
 */
 
 //setelah login, hanya yang admin bisa akes
-Route::middleware(['isLogin', 'cekRole:admin'])->group(function () {
+Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [PageController::class, 'home'])->name('home');
+    Route::get('/obat', [MedicineController::class, 'index'])->name('medicine.index');
+    Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
+    Route::post('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
+    Route::post('/obat/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
+    Route::post('/obat/delete', [MedicineController::class, 'delete'])->name('medicine.delete');
     Route::get('tabel/{slug}',[PageController::class, 'detilHari'])->name('detil.hari');
-});
-
-
+}); 
 //setelah login hanya user biasa yg bisa akses
 Route::middleware(['isLogin', 'cekRole:user'])->group(function () {
     Route::get('/home', [PageController::class, 'home'])->name('home');

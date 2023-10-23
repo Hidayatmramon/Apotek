@@ -1,5 +1,5 @@
 
-@extends('home.main')
+@extends('admin.main')
 @section('home')
     <!-- ***** Header Area End ***** -->
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -12,14 +12,13 @@
                                  data-wow-delay="1s">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h2>Pilih Hari Untuk Melihat Data Yang Piket Rayon</h2>
-                                        <p>Jangan Lupa Piket Rayon Ya!! saat jam pulang sekolah</p>
+                                        <h2>Pilih Hari Untuk Melihat Data Yang Kerja</h2>
+                                        <p>Utamakan Keselamatan!!</p>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="white-button first-button scroll-to-section">
                                             <a
-                                                href="https://www.quipper.com/id/blog/tips-trick/school-life/piket-kelas/#Pengertian_Piket_Kelas">Pengertian
-                                                Piket <i class="fab fa-gitkraken"></i></a>
+                                                href="#">Untuk Admin page sedang dalam tahap pembuatan <i class="fab fa-gitkraken"></i></a>
                                         </div>
                                     </div>
                                 </div>
