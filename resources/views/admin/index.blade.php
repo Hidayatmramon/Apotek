@@ -1,92 +1,19 @@
 
 @extends('admin.main')
 @section('home')
-    <!-- ***** Header Area End ***** -->
-    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-6 align-self-center">
-                            <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
-                                 data-wow-delay="1s">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <h2>Pilih Hari Untuk Melihat Data Yang Kerja</h2>
-                                        <p>Utamakan Keselamatan!!</p>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="white-button first-button scroll-to-section">
-                                            <a
-                                                href="#">Untuk Admin page sedang dalam tahap pembuatan <i class="fab fa-gitkraken"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="group-6">
-                            <hr>
-                            <hr>
-                            <hr>
-{{--                            <div class="pspj-ruang">Nama Dokter--}}
-{{--                                <P class="gurupj">{{Auth::user</P>--}}
-{{--                            </div>--}}
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                                <img src="{{asset('homepage/assets/images/img-1.png')}}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    <div class="section categories">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h1>jadwal kerja</h1>
-                    </div>
-                </div>
-                                @foreach($haris as $hari)
-                                    <div class="col-lg col-sm-6 col-xs-12">
-                                        <div class="item">
-                                            <h4>{{$hari->hari}}</h4>
-                                            <div class="thumb">
-                                                <a href="{{route('detil.hari',$hari->hari)}}"><img src="{{asset('homepage/assets/images/senin.png')}}" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-            </div>
-        </div>
-    </div>
-
-    <!--percobaan-->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                {{--                <div class="modal-body">--}}
-                {{--                    {{Auth::user()->name}}--}}
-                {{--                    {{Auth::user()->nis}}--}}
-                {{--                    {{Auth::user()->rayon}}--}}
-                {{--                </div>--}}
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save   changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="products-row">
+    <button class="cell-more-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+    </button>
+      <div class="product-cell image">
+        <img src="" alt="product">
+        <span>isi</span>
+      </div>
+    <div class="product-cell category"><span class="cell-label">Name:</span>Furniture</div>
+    <div class="product-cell stock"><span class="cell-label">Stock:</span>36</div>
+    <div class="product-cell price"><span class="cell-label">Price:</span>$560</div>
+  </div>
 
 @endsection
 

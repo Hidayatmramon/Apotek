@@ -24,12 +24,12 @@ Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/home', [PageController::class, 'home'])->name('home');
     Route::get('/obat', [MedicineController::class, 'index'])->name('medicine.index');
     Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
-    Route::post('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
-    Route::post('/obat/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
-    Route::post('/obat/delete', [MedicineController::class, 'delete'])->name('medicine.delete');
+    Route::get('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
+    Route::get('/obat/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
+    Route::get('/obat/delete', [MedicineController::class, 'delete'])->name('medicine.delete');
     Route::get('tabel/{slug}',[PageController::class, 'detilHari'])->name('detil.hari');
 }); 
-//setelah login hanya user biasa yg bisa akses
+//setelah login hanya user biasa yg bisa aksses
 Route::middleware(['isLogin', 'cekRole:user'])->group(function () {
     Route::get('/home', [PageController::class, 'home'])->name('home');
     //Route::get('/student', [StudentController::class, 'index'])->name('student.index');
