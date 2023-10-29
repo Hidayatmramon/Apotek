@@ -100,31 +100,4 @@ class MedicineController extends Controller
         return redirect()->back()->with('deleted', 'Berhasil menghapus data!');
     }
 
-    public function stock()
-    {
-        $medicines = Medicine::orderBy('stock', 'ASC')->get();
-        return view('medicine.stock', compact('medicines'));
-    }
-
-    public function stockEdit($id)
-    {
-        $medicine = Medicine::find($id);
-        return response()->json($medicine);
-    }
-
-    public function stockUpdate(Request $request, $id)
-    {
-        $request->validate([
-            'stock' => 'required|numeric',
-        ]);
-
-        $medicine = Medicine::find($id);
-
-        if ($request->stock <= $medicine->stock) { 
-            return response()->json(["message" => "Stock yang diinput tidak boleh kurang dari stock sebelumnya"], 400);
-        } else {
-            $medicine->update(["stock" => $request->stock]);
-            return response()->json("Berhasil", 200);
-        }
-    }
 }

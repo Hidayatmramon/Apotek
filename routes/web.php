@@ -21,7 +21,7 @@ use App\Http\Controllers\MedicineController;
 //setelah login, hanya yang admin bisa akes
 Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-    Route::get('/home', [PageController::class, 'home'])->name('home');
+    Route::get('/admin/home', [PageController::class, 'home'])->name('admin.home');
     Route::get('/obat', [MedicineController::class, 'index'])->name('medicine.index');
     Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
     Route::get('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
