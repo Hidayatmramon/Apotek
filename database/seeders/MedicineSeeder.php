@@ -16,7 +16,7 @@ class MedicineSeeder extends Seeder
         Medicine::create([
             'type' => 'tablet',
             'name' => 'paracetamol',
-            'photo' => public_path('../../public/login/images/logo.png'), // Use the absolute path to the image
+            'photo' => 'login/images/logo.png', // Use the absolute path to the image
             'price' => 10000,
             'stock' => 100,
         ]);
