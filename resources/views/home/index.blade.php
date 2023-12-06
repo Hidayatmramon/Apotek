@@ -45,19 +45,22 @@
             <span class="section__subtitle">Obat Obatan</span>
             <h2 class="section__title">Produk obat kami</h2>
 
+            
+            @foreach ($medicine as $item)
             <div class="popular__container container grid">
                 <article class="popular__card">
-                    <img src="{{'user/img/risoles sayur.png'}}" alt="popular image" class="popular__img" />
-                    <h3 class="popular__name">obat</h3>
+                    <img src="{{asset($item['photo'])}}" alt="popular image" class="popular__img" />
+                    <h3 class="popular__name">{{ $item['type'] }}</h3>
 
-                    <span class="popular__description">Snacks</span>
-                    <span class="popular__price">Rp25.000/5 pcs</span>
+                    <span class="popular__description">{{ $item['name'] }}</span>
+                    <span class="popular__price">{{ $item['price'] }}</span>
 
                     <button class="popular__button">
                         <i class="ri-shopping-bag-line"></i>
                     </button>
                 </article>
             </div>
+            @endforeach
         </section>
 
         <!-- ==================== RECENTLY ====================

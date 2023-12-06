@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -26,7 +27,7 @@ Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
     Route::get('/obat/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
     Route::get('/obat/delete{id}', [MedicineController::class, 'delete'])->name('medicine.delete');
-    Route::get('tabel/{slug}',[PageController::class, 'detilHari'])->name('detil.hari');
+    Route::get('/user-list', [UserController::class, 'index'])->name('user.index');
 }); 
 //setelah login hanya user biasa yg bisa aksses
 Route::middleware(['isLogin', 'cekRole:user'])->group(function () {

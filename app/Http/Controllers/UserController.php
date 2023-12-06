@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hari;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class HariController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('user.index', compact('user'));
     }
 
     /**

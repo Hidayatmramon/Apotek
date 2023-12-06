@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hari;
 use App\Models\User;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,19 +13,18 @@ class PageController extends Controller
     public function dashboard()
     {
        if (Auth::user()->role === 'admin') {
-        $haris = Hari::all();
-        return view('admin.index', compact('haris'));
+        return view('admin.index');
     } elseif (Auth::user()->role === 'kasir') {
-        $haris = Hari::all();
-        return view('admin.index', compact('haris'));
+        return view('admin.index');
     } else {
         return view('home.index');
     }
     }
 
      public function home(){
-//           $haris=Hari::all();
-         return view('home.index');
+        $medicine = Medicine::all();
+        return view('home.index', compact('medicine'));
+
      }
      public function detilHari($slug)
      {

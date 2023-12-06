@@ -435,10 +435,10 @@ body.dark-theme {
 }
 
 .popular__img {
-  width: 220px;
+  width: 10px;
   position: absolute;
   inset: 0;
-  top: -2.5rem;
+  top: -6.8rem;
   margin: 0 auto;
   transition: transform 0.4s;
 }
