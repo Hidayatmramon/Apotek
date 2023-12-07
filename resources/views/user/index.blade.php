@@ -14,8 +14,8 @@
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
         </button>
-        <form action="#">
-            <button class="app-content-headerButton">Add user</button>
+        <form action="{{ route('user.create') }}">
+            <button class="app-content-headerButton">Add User</button>
             
         </form>
     </div>
@@ -58,7 +58,7 @@
                 </button></div>
             <div class="product-cell stock">Hari<button class="sort-button">
                 </button></div>
-            <div class="product-cell stock">Role<button class="sort-button">
+            <div class="product-cell price">Role<button class="sort-button">
                 </button></div>
             <div class="product-cell price">Aksi<button class="sort-button">
                 </button></div>
@@ -72,6 +72,8 @@
         <div class="alert alert-warning">{{ Session::get('deleted') }}</div>
         @endif
 
+        @php $no = 1; @endphp
+        {{-- {{dd($item)}} --}}
         @foreach ($user as $item)
         <div class="products-row">
             <button class="cell-more-button">
@@ -81,21 +83,23 @@
                     <circle cx="12" cy="19" r="1" />
                 </svg>
             </button>
-            <div class="product-cell category"><span class="cell-label">Username:</span>{{ $item['username'] }}</div>
-            <div class="product-cell stock"><span class="cell-label">Ruang:</span>{{ $item['ruang'] }}</div>
-            <div class="product-cell price"><span class="cell-label">Hari:</span>{{ $item['hari'] }}</div>
+            <div class="product-cell image">
+                <span>{{ $item['username'] }}</span>
+            </div>
+            <div class="product-cell category"><span class="cell-label">Ruang:</span>{{ $item['ruang'] }}</div>
+            <div class="product-cell stock"><span class="cell-label">Hari:</span>{{ $item['hari'] }}</div>
             <div class="product-cell price"><span class="cell-label">Role:</span>{{ $item['role'] }}</div>
             <div class="product-cell aksi">
                 <span class="cell-label">Aksi:</span>
-                <form method="POST" action="{{ route('medicine.edit', $item['id']) }}">
-                    <button class="app-content-headerButton" type="submit">edit</button>
-                    
-                </form>
-                <form action="{{ route('medicine.delete', $item['id']) }}" method="post">
+                
+                <a class="app-content-headerButton" href="{{route('user.edit',$item->id)}}" type="submit">edit</a>
+                
+                <form action="{{ route('user.delete', $item->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="app-content-headerButton">Hapus</button>
                 </form>
+                
             </div>
         </div>
         @endforeach

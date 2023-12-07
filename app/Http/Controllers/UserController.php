@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -29,7 +29,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required|in:admin,user,kasir',
+            'username' => 'required|string',
+            'namadok' => 'nullable|string',
+            'ruang' => 'nullable|string',
+            'hari' => 'nullable|string',
+            'password' => 'required|string',
+        ]);
+
+        User::create([
+            'role' => $request->role,
+            'username' => $request->username,
+            'namadok' => $request->namadok,
+            'ruang' => $request->ruang,
+            'hari' => $request->hari,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('user.index')->with('succes', 'berhasil Menambahkan User');
     }
 
     /**
@@ -45,7 +63,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -53,7 +72,26 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'role' => 'required|in:admin,user,kasir',
+            'username' => 'required|string',
+            'namadok' => 'nullable|string',
+            'ruang' => 'nullable|string',
+            'hari' => 'nullable|string',
+            'password' => 'required|string',
+        ]);
+
+        User::where('id', $id)->update([
+            'role' => $request->role,
+            'username' => $request->username,
+            'namadok' => $request->namadok,
+            'ruang' => $request->ruang,
+            'hari' => $request->hari,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('user.index')->with('succes', 'berhasil Mengubah User');
+ 
     }
 
     /**
@@ -61,6 +99,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('id', $id)->delete();
+        return redirect()->back()->with('deleted', 'berhasil menghapus data!');
     }
 }

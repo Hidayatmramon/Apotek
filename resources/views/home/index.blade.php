@@ -49,16 +49,20 @@
             @foreach ($medicine as $item)
             <div class="popular__container container grid">
                 <article class="popular__card">
-                    <img src="{{asset($item['photo'])}}" alt="popular image" class="popular__img" />
+                    <img src="{{asset('storage/photos/' . $item['photo'])}}" alt="popular image" class="popular__img" />
                     <h3 class="popular__name">{{ $item['type'] }}</h3>
 
                     <span class="popular__description">{{ $item['name'] }}</span>
                     <span class="popular__price">{{ $item['price'] }}</span>
 
                     <button class="popular__button">
-                        <i class="ri-shopping-bag-line"></i>
+                        <a href="#">
+                            <i class="ri-shopping-bag-line"></i>
+                          </a>
+                          
+                        {{-- href="{{route('detil.hari',$hari->hari)}} --}}
                     </button>
-                </article>
+                </article>      
             </div>
             @endforeach
         </section>

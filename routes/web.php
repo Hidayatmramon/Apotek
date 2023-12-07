@@ -23,13 +23,20 @@ use App\Http\Controllers\UserController;
 Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/home', [PageController::class, 'home'])->name('admin.home');
+    //medicine
     Route::get('/obat', [MedicineController::class, 'index'])->name('medicine.index');
     Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
     Route::post('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
     Route::get('/obat/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit');
     Route::patch('/obat/edit/{id}', [MedicineController::class, 'update'])->name('medicine.update');
     Route::delete('/obat/edit{id}', [MedicineController::class, 'destroy'])->name('medicine.delete');
-    Route::get('/user-list', [UserController::class, 'index'])->name('user.index');
+    //user list
+    Route::get('/user-list', [userController::class, 'index'])->name('user.index');
+    Route::get('/user-list/create', [userController::class, 'create'])->name('user.create');
+    Route::post('/user-list/store', [userController::class, 'store'])->name('user.store');
+    Route::get('/user-list/edit/{id}', [userController::class, 'edit'])->name('user.edit');
+    Route::patch('/user-list/edit/{id}', [userController::class, 'update'])->name('user.update');
+    Route::delete('/user-list/edit{id}', [userController::class, 'destroy'])->name('user.delete');
 }); 
 //setelah login hanya user biasa yg bisa aksses
 Route::middleware(['isLogin', 'cekRole:user'])->group(function () {
