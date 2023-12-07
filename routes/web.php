@@ -25,8 +25,10 @@ Route::middleware(['isLogin', 'cekRole:admin,kasir'])->group(function () {
     Route::get('/admin/home', [PageController::class, 'home'])->name('admin.home');
     Route::get('/obat', [MedicineController::class, 'index'])->name('medicine.index');
     Route::get('/obat/create', [MedicineController::class, 'create'])->name('medicine.create');
-    Route::get('/obat/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
-    Route::get('/obat/delete{id}', [MedicineController::class, 'delete'])->name('medicine.delete');
+    Route::post('/obat/store', [MedicineController::class, 'store'])->name('medicine.store');
+    Route::get('/obat/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit');
+    Route::patch('/obat/edit/{id}', [MedicineController::class, 'update'])->name('medicine.update');
+    Route::delete('/obat/edit{id}', [MedicineController::class, 'destroy'])->name('medicine.delete');
     Route::get('/user-list', [UserController::class, 'index'])->name('user.index');
 }); 
 //setelah login hanya user biasa yg bisa aksses

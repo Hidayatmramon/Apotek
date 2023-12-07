@@ -9,7 +9,7 @@ class MedicineController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */ 
     public function index()
     {
         $medicine = Medicine::all();
@@ -29,21 +29,30 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-        'name' => 'required|min:3',
-        'photo' => 'required',
-        'type' => 'required',
-        'price' => 'required|numeric',
-        'stock' => 'required|numeric',
-    ]);
-    $imageName = NULL;
+        
+        //  return $request->file('image')->store('post-images');
 
-   if ($request->file('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-        }
-        Medicine::create([
+        $request->validate([
+            'name' => 'required|min:3',
+            'photo' => 'required',
+            // 'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'type' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+        $imageName = NULL;
+
+
+    if ($request->photo) {
+            $imageName = time() . '.' . $request->photo->extension();
+            $image = $request->photo->storeAs('public/photos', $imageName);
+            // $imageName = time() . '.' . $image->getClientOriginalExtension();
+            // $image->move(public_path('images'), $imageName);
+
+            // dd($image);
+        }   
+
+        Medicine::create([  
             'name' => $request->name,
             'photo' => $imageName,
             'type' => $request->type,
@@ -65,7 +74,7 @@ class MedicineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id) 
+    public function edit(Medicine $medicine, $id) 
     {
         $medicine = Medicine::find($id);
         return view('medicine.edit', compact('medicine'));
@@ -99,5 +108,6 @@ class MedicineController extends Controller
         Medicine::where('id', $id)->delete();
         return redirect()->back()->with('deleted', 'Berhasil menghapus data!');
     }
+    
 
 }

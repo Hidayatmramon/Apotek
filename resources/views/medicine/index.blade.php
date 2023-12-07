@@ -73,6 +73,7 @@
         @endif
 
         @php $no = 1; @endphp
+        {{-- {{dd($item)}} --}}
         @foreach ($medicine as $item)
         <div class="products-row">
             <button class="cell-more-button">
@@ -83,7 +84,7 @@
                 </svg>
             </button>
             <div class="product-cell image">
-                <img src="{{asset($item['photo'])}}">
+                <img src="{{asset('storage/photos/' . $item['photo'])}}">
                 <span>{{ $item['type'] }}</span>
             </div>
             <div class="product-cell category"><span class="cell-label">Name:</span>{{ $item['name'] }}</div>
@@ -91,15 +92,15 @@
             <div class="product-cell price"><span class="cell-label">Price:</span>{{ $item['price'] }}</div>
             <div class="product-cell aksi">
                 <span class="cell-label">Aksi:</span>
-                <form method="POST" action="{{ route('medicine.edit', $item['id']) }}">
-                    <button class="app-content-headerButton" type="submit">edit</button>
-                    
-                </form>
-                <form action="{{ route('medicine.delete', $item['id']) }}" method="post">
+                
+                <a class="app-content-headerButton" href="{{route('medicine.edit',$item->id)}}" type="submit">edit</a>
+                
+                <form action="{{ route('medicine.delete', $item->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="app-content-headerButton">Hapus</button>
                 </form>
+                
             </div>
         </div>
         @endforeach
