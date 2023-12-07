@@ -81,7 +81,7 @@ class UserController extends Controller
         User::where('id', $id)->update([
             'role' => $request->role,
             'username' => $request->username,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect()->route('user.index')->with('succes', 'berhasil Mengubah User');

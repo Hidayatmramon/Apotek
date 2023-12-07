@@ -15,7 +15,7 @@ class PageController extends Controller
        if (Auth::user()->role === 'admin') {
         return view('admin.index');
     } elseif (Auth::user()->role === 'kasir') {
-        return view('admin.index');
+        return view('kasir.index');
     } else {
         return view('home.index');
     }

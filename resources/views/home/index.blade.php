@@ -46,8 +46,9 @@
             <h2 class="section__title">Produk obat kami</h2>
 
             
-            @foreach ($medicine as $item)
-            <div class="popular__container container grid">
+           
+            <div class="popular__container container grid"> 
+                @foreach ($medicine as $item)
                 <article class="popular__card">
                     <img src="{{asset('storage/photos/' . $item['photo'])}}" alt="popular image" class="popular__img" />
                     <h3 class="popular__name">{{ $item['type'] }}</h3>
@@ -62,9 +63,10 @@
                           
                         {{-- href="{{route('detil.hari',$hari->hari)}} --}}
                     </button>
-                </article>      
+                </article> 
+                 @endforeach    
             </div>
-            @endforeach
+            
         </section>
 
         <!-- ==================== RECENTLY ====================

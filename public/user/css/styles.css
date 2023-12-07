@@ -419,9 +419,11 @@ body.dark-theme {
 /*=============== POPULAR ===============*/
 .popular__container {
   padding-top: 4rem;
-  grid-template-columns: 250px;
-  justify-content: center;
-  row-gap: 5.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: flex-end; 
+  align-items: flex-start;   
+  gap: 5.5rem;
 }
 
 .popular__card {
@@ -431,7 +433,8 @@ body.dark-theme {
   box-shadow: 0 8px 20px hsl(204, 76%, 49%);
   border-radius: 1rem;
   text-align: center;
-  transition: background-color 0.4s; /* for dark mode animation */
+  transition: background-color 0.4s; 
+
 }
 
 .popular__img {

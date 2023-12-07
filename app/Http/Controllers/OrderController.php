@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Medicine;    
 use Illuminate\Http\Request;
+use PDF;
+use Excel;  
 
 class OrderController extends Controller
 {
