@@ -44,7 +44,7 @@ class UserController extends Controller
             'namadok' => $request->namadok,
             'ruang' => $request->ruang,
             'hari' => $request->hari,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect()->route('user.index')->with('succes', 'berhasil Menambahkan User');
@@ -75,18 +75,12 @@ class UserController extends Controller
         $request->validate([
             'role' => 'required|in:admin,user,kasir',
             'username' => 'required|string',
-            'namadok' => 'nullable|string',
-            'ruang' => 'nullable|string',
-            'hari' => 'nullable|string',
             'password' => 'required|string',
         ]);
 
         User::where('id', $id)->update([
             'role' => $request->role,
             'username' => $request->username,
-            'namadok' => $request->namadok,
-            'ruang' => $request->ruang,
-            'hari' => $request->hari,
             'password' => $request->password,
         ]);
 
