@@ -65,16 +65,11 @@
 
         </div>
 
-        @if (Session::get('success'))
-        <div class="alert alert-success">{{ Session::get('success') }}</div>
-        @endif
-        @if (Session::get('deleted'))
-        <div class="alert alert-warning">{{ Session::get('deleted') }}</div>
-        @endif
+       
 
-        {{-- @php $no = 1; @endphp
-        {{-- {{dd($item)}} 
-        @foreach ($medicine as $item)
+        @php $no = 1; @endphp
+        {{-- {{-- {{dd($item)}}  --}}
+        @foreach ($orders as $item)
         <div class="products-row">
             <button class="cell-more-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
@@ -84,26 +79,33 @@
                 </svg>
             </button>
             <div class="product-cell image">
-                <img src="{{asset('storage/photos/' . $item['photo'])}}">
-                <span>{{ $item['type'] }}</span>
+                {{-- <img src="{{asset('storage/photos/' . $item['photo'])}}"> --}}
+                <span>{{ $item['username'] }}</span>
             </div>
-            <div class="product-cell category"><span class="cell-label">Name:</span>{{ $item['name'] }}</div>
-            <div class="product-cell stock"><span class="cell-label">Stock:</span>{{ $item['stock'] }}</div>
-            <div class="product-cell price"><span class="cell-label">Price:</span>{{ $item['price'] }}</div>
+            @foreach ($item['medicine'] as $medicine)
+            
+                    <div class="product-cell category">
+                        <span class="cell-label"></span>{{ $medicine['name_medicine'] }} ( {{ number_format($medicine['price'],0,',','.') }} ) : Rp. {{ number_format($medicine['sub_price'],0,',','.') }}  qty {{ $medicine['qty'] }}
+                    </div>        
+            @endforeach
+            <div class="product-cell stock"><span class="cell-label">Total Bayar:</span>Rp. {{ number_format($item['total_price'], 0, ',', '.') }}</div>
+            <div class="product-cell price"><span class="cell-label">Kasir:</span>{{ $item['user']['username']}}</div>
+            <div class="product-cell price"><span class="cell-label">Tanggal Beli:</span>{{ date('d F Y', strtotime($item['created_at'])) }}</div>
+            
             <div class="product-cell aksi">
                 <span class="cell-label">Aksi:</span>
                 
-                <a class="app-content-headerButton" h   ref="{{route('medicine.edit',$item->id)}}" type="submit">edit</a>
+                {{-- <a class="app-content-headerButton" h   ref="{{route('medicine.edit',$item->id)}}" type="submit">edit</a> --}}
                 
-                <form action="{{ route('medicine.delete', $item->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="app-content-headerButton">Hapus</button>
+                <form action="{{ route('order.download', $item['id']) }}">
+                    {{-- @csrf
+                    @method('DELETE') --}}
+                    <button type="submit" class="app-content-headerButton">Download</button>
                 </form>
                 
             </div>
         </div>
-        @endforeach --}}
+        @endforeach
 
     </div>
 </div>
