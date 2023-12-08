@@ -10,11 +10,11 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'medicines', 'username', 'total_price'
+        'user_id', 'medicine', 'username', 'total_price'
     ];
 
     protected $casts = [
-        'medicines' => 'array',
+        'medicine' => 'array',
     ];
     public function user(){
        

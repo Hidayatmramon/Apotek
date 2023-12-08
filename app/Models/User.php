@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $fillable = [
         'username','ruang', 'hari', 'role','password'
     ];
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

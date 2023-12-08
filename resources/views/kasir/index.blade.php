@@ -12,7 +12,7 @@
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
         </button>
-        <form action="{{ route('medicine.create') }}">
+        <form action="{{ route('order.create') }}">
             <button class="app-content-headerButton">new purchase</button>
             
         </form>
@@ -93,7 +93,7 @@
             <div class="product-cell aksi">
                 <span class="cell-label">Aksi:</span>
                 
-                <a class="app-content-headerButton" href="{{route('medicine.edit',$item->id)}}" type="submit">edit</a>
+                <a class="app-content-headerButton" h   ref="{{route('medicine.edit',$item->id)}}" type="submit">edit</a>
                 
                 <form action="{{ route('medicine.delete', $item->id) }}" method="post">
                     @csrf
